@@ -33,7 +33,7 @@ class data_processor:
         """
         import xml.etree.ElementTree as ET
         import re
-        xml_tree = ET.parse("BIBLIOGRAPHIC_64846678830003941_1.xml")
+        xml_tree = ET.parse(self.file_name)
         xml_root = xml_tree.getroot()
         enter = False
         # lists for the books information
