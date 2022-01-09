@@ -91,6 +91,7 @@ class data_processor:
                                 pages = int(b_pages)
                             else:
                                 pages = None
+            # append which one of the subfields
             topic_by_record.append(record_topics)
             titles.append(title)
             ids.append(mms_id)
@@ -102,6 +103,11 @@ class data_processor:
         return ids, records_isbn, titles, topic_by_record, descriptions, authors, book_pages
 
     def normalize_topics(self, topic_by_record):
+        """This method normalize the topics subfield in this way:
+           * Remove duplicates
+           * Split the topics into short phrases.
+           * remove missing empty strings and spaces/dot at the end.
+           """
         normalized_topics = []
         for record_topics in topic_by_record:
             rec_topics = list(set(record_topics))
